@@ -1,0 +1,82 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+label {
+  margin: 0 !important;
+}
+
+.btn-trans {
+  background-color: transparent;
+}
+
+.check {
+  width: 40px;
+  text-align: left;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+input[type=checkbox] ~ label:before {
+    font-family: FontAwesome;
+    content: "\f096";
+}
+
+input[type=checkbox]:checked ~ label:before {
+  content: "\f046";
+}
+
+.btn-clz {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.form-block {
+  display: none;
+
+  height: 250px;
+  width: 400px !important;
+  margin: auto;
+  padding: 30px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: white;
+  
+  text-align: center;
+}
+
+.block-btn {
+  padding: 10px;
+
+  width: 49%;
+
+  background-color: #27B1BE;
+  border-radius: 0px !important;
+  border: 0px;
+
+  color: white;
+}
+
+#cover {
+  display: none;
+
+  position:fixed;
+  padding:0;
+  margin:0;
+
+  top:0;
+  left:0;
+
+  width: 100%;
+  height: 100%;
+  background-color: rgba(1, 1, 1, 0.7);
+}

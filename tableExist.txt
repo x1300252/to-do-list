@@ -1,0 +1,54 @@
+var express = require('express');
+var router = express.Router();
+var mysql = require("mysql");
+
+var db = mysql.createConnection({
+    host: "localhost",
+    user: "test1",
+    password: "test1",
+    database: "test"
+});
+
+router.get('/', function(req, res, next) {
+  db.connect(function(err) {
+    if (err) {
+        console.log('connecting error');
+        return;
+    }
+    console.log('connecting success');
+  });
+
+  db = db;
+  console.log(db.user+" connect successfully");
+  var table_name = "todo";
+  var sql = "SELECT * FROM information_schema.tables WHERE table_name ='"+table_name+"'";
+  db.query(sql, function(err, rows) {
+    if (err) {
+        console.log(err);
+    }
+    if (rows.length) {
+      console.log(table_name+" exist");
+    }
+    else {
+			sql = "CREATE TABLE "+table_name+" (user VARCHAR(255), fin BOOLEAN, thing VARCHAR(255), due DATETIME)";
+
+			db.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log(table_name+" created");
+      });
+    }
+  });
+
+  sql = 'SELECT * FROM todo';
+  db.query(sql, function(err, rows) {
+    if (err) {
+        console.log(err);
+    }
+
+    res.render('index', { title: 'To-do List', data: rows});
+  });
+  
+  next();
+});
+
+module.exports = router;
