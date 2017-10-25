@@ -39,6 +39,7 @@ router.post('/add', function(req, res) {
     }
     res.setHeader('Content-Type', 'application/json');
     res.redirect('/');
+    res.end();
   });
 });
 
